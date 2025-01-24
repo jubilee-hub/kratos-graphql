@@ -1,0 +1,5 @@
+extend type Mutation {
+    # 创建用户
+    createUser(input: CreateUserInput!): User!
+}
+ 

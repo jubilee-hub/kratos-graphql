@@ -1,0 +1,63 @@
+#interface Node {
+#    id: ID!
+#}
+
+#model Query
+directive @hasRole(role: Role!) on FIELD_DEFINITION
+enum Role {
+    ADMIN
+    USER
+}
+
+"""Maps a Time GraphQL scalar to a Go time.Time struct."""
+scalar Time
+
+scalar  Any
+
+scalar UUID
+
+
+scalar Map
+
+scalar Timestamp
+
+type Mutation
+
+"""
+网关定制的filter
+"""
+input MakerFilterInput {
+    _ORs:[BusFilterInput]
+}
+
+"""
+ORS filter
+"""
+input BusFilterInput {
+    account: OperatorMapInput
+    role: OperatorMapInput
+    depts: OperatorMapInput
+    permission:OperatorMapInput
+    extra: OperatorMapInput
+}
+
+"""
+Operator Map Input
+"""
+input OperatorMapInput {
+    eq: String
+    neq: String
+    like: String
+    nlike: String
+    ieq: String
+    in: [String]
+    nin: [String]
+    gt: Float
+    lt: Float
+    gte: Float
+    lte: Float
+    bt: [Float]
+    nbt: [Float]
+    nnull: String
+    inull: String
+}
